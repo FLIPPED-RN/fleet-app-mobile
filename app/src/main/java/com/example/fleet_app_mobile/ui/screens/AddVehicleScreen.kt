@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.fleet_app_mobile.data.model.Vehicle
 import com.example.fleet_app_mobile.data.repository.FleetRepository
@@ -13,8 +12,7 @@ import kotlinx.coroutines.launch
 @Composable()
 fun AddVehicleScreen(
     onBack: () -> Unit,
-    repository: FleetRepository = FleetRepository(),
-    onSave: () -> Unit
+    repository: FleetRepository = FleetRepository()
 ) {
     var make by remember { mutableStateOf("") }
     var model by remember { mutableStateOf("") }

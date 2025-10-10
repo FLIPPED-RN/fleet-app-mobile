@@ -2,6 +2,7 @@ package com.example.fleet_app_mobile.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -12,8 +13,8 @@ import kotlinx.coroutines.launch
 @Preview
 @Composable
 fun ReportsScreen(repo: FleetRepository = FleetRepository()) {
-    var totalFuel by remember { mutableStateOf(0.0) }
-    var totalMaint by remember { mutableStateOf(0.0) }
+    var totalFuel by remember { mutableDoubleStateOf(0.0) }
+    var totalMaint by remember { mutableDoubleStateOf(0.0) }
     var isLoading by remember { mutableStateOf(true) }
     val scope = rememberCoroutineScope()
 
@@ -40,7 +41,11 @@ fun ReportsScreen(repo: FleetRepository = FleetRepository()) {
         } else {
             Text("Затраты на топливо: ${"%,.2f".format(totalFuel)} ₽")
             Text("Затраты на ТО: ${"%,.2f".format(totalMaint)} ₽")
-            Divider(Modifier.padding(vertical = 8.dp))
+            HorizontalDivider(
+                Modifier.padding(vertical = 8.dp),
+                DividerDefaults.Thickness,
+                DividerDefaults.color
+            )
             Text("Всего: ${"%,.2f".format(totalFuel + totalMaint)} ₽", style = MaterialTheme.typography.titleLarge)
         }
     }

@@ -77,8 +77,7 @@ class MainActivity : ComponentActivity() {
                         composable("add_vehicle") {
                             AddVehicleScreen(
                                 onBack = { nav.popBackStack() },
-                                repository = FleetRepository(),
-                                onSave = {nav.popBackStack()}
+                                repository = FleetRepository()
                             )
                         }
                         composable("reports") { ReportsScreen() }

@@ -1,6 +1,6 @@
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -10,9 +10,6 @@ import com.example.fleet_app_mobile.data.repository.FleetRepository
 import kotlinx.coroutines.launch
 
 
-private fun iso(date: String): String =
-    if (date.contains("T")) date else "${date.trim()}T00:00:00Z"
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VehicleDetailScreen(
@@ -21,7 +18,7 @@ fun VehicleDetailScreen(
     repo: FleetRepository = FleetRepository()
 ) {
     var vehicle by remember { mutableStateOf<Vehicle?>(null) }
-    var tab by remember { mutableStateOf(0) }
+    var tab by remember { mutableIntStateOf(0) }
     var error by remember { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
 
@@ -41,7 +38,7 @@ fun VehicleDetailScreen(
                 title = { Text(vehicle?.let { "${it.make} ${it.model}" } ?: "Загрузка...") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = null)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                     }
                 }
             )
