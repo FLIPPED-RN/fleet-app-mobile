@@ -4,8 +4,6 @@ import com.example.fleet_app_mobile.data.model.*
 import retrofit2.http.*
 
 interface ApiService {
-
-    // === Vehicles ===
     @GET("Vehicles")
     suspend fun getVehicles(): List<Vehicle>
 
@@ -19,7 +17,6 @@ interface ApiService {
     suspend fun deleteVehicle(@Path("id") id: Int)
 
 
-    // === Maintenances ===
     @GET("Maintenances/Vehicle/{vehicleId}")
     suspend fun getMaintenances(@Path("vehicleId") vehicleId: Int): List<Maintenance>
 
@@ -30,7 +27,6 @@ interface ApiService {
     suspend fun deleteMaintenance(@Path("id") id: Int)
 
 
-    // === FuelRecords ===
     @GET("FuelRecords/Vehicle/{vehicleId}")
     suspend fun getFuel(@Path("vehicleId") vehicleId: Int): List<FuelRecord>
 
@@ -41,7 +37,6 @@ interface ApiService {
     suspend fun deleteFuel(@Path("id") id: Int)
 
 
-    // === Documents ===
     @GET("Documents/Vehicle/{vehicleId}")
     suspend fun getDocuments(@Path("vehicleId") vehicleId: Int): List<Document>
 
