@@ -29,7 +29,6 @@ fun VehicleListScreen(
     var error by remember { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
 
-    // загружаем список
     LaunchedEffect(Unit) {
         scope.launch {
             runCatching { repo.getVehicles() }
